@@ -73,3 +73,8 @@ Estas son decisiones que se tomaron para mantener el proyecto sencillo:
 ### Paso 10 — Validación del formato de la placa
 - **Qué se hizo:** se agregó en `lib/entrada.dart` la función `leerPlaca()`, que usa `leerTexto()` para no aceptar placas vacías, vuelve a pedir la placa si no tiene entre 5 y 6 caracteres y la convierte a mayúsculas. El registro de vehículos ahora lee la placa con esta función. Se dejó en `entrada.dart` porque también se va a usar en buscar, modificar y eliminar.
 - **Cómo se probó:** se registró un vehículo escribiendo primero "AB1" (muy corta) y "ABCD1234" (muy larga), que fueron rechazadas; luego Enter vacío, que pidió de nuevo el dato; y por último "abc123", que se guardó como "ABC123".
+
+
+### Paso 11 — Validación de placa repetida con un Set
+- **Qué se hizo:** se agregó en `lib/gestion.dart` el Set `placasRegistradas`, que guarda las placas de los vehículos que están dentro del parqueadero. Al registrar, si la placa ya está en el Set se muestra un error y se vuelve al menú sin pedir los demás datos; si no está, se registra el vehículo y se agrega su placa al Set.
+- **Cómo se probó:** se registró el vehículo ABC123 y luego se intentó registrar "abc123", que el sistema rechazó por estar repetida (al pasarla a mayúsculas es la misma placa). Después se registró XYZ98 sin problema y el contador quedó en 2.
