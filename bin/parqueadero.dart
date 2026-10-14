@@ -18,7 +18,7 @@ void main() {
       case 2:
         consultarTodos();
       case 3:
-        print('\n[Buscar vehículo] Opción en construcción.');
+        buscarVehiculo();
       case 4:
         print('\n[Modificar vehículo] Opción en construcción.');
       case 5:

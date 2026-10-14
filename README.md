@@ -98,3 +98,8 @@ Estas son decisiones que se tomaron para mantener el proyecto sencillo:
 ### Paso 15 — Consulta de todos los vehículos
 - **Qué se hizo:** se agregó en `lib/gestion.dart` la función `consultarTodos()`, que recorre la lista de vehículos con un ciclo `for` clásico y muestra cada uno numerado usando el método `obtenerInfo()`. Si la lista está vacía, muestra un aviso. Al final muestra el total. La opción 2 del menú ahora llama a esta función.
 - **Cómo se probó:** se ejecutó `dart run`, se eligió la opción 2 sin vehículos y apareció el aviso "No hay vehículos en el parqueadero". Luego se registraron ABC123 y XYZ98, y la opción 2 los mostró numerados del 1 al 2 con el total.
+
+
+### Paso 16 — Búsqueda de vehículo por placa
+- **Qué se hizo:** se agregaron en `lib/gestion.dart` dos funciones. `buscarPorPlaca()` recorre la lista con un ciclo `for-in` y devuelve el vehículo que tenga la placa indicada, o `null` si no lo encuentra; se va a reutilizar en modificar y eliminar. `buscarVehiculo()` es la opción 3 del menú: pide la placa con `leerPlaca()` y muestra el vehículo o un aviso si no existe.
+- **Cómo se probó:** se eligió la opción 3 sin vehículos y apareció el aviso sin pedir la placa. Luego se registró ABC123 y se buscó "xyz98", que no existe, y apareció el aviso; después se buscó "abc123" en minúsculas y se encontró el vehículo ABC123.

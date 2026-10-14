@@ -51,3 +51,33 @@ void consultarTodos() {
 
   print('Total: ${vehiculos.length} vehículo(s)');
 }
+
+// Busca un vehículo en la lista por su placa. Si no lo encuentra, devuelve null.
+Vehiculo? buscarPorPlaca(String placa) {
+  for (Vehiculo vehiculo in vehiculos) {
+    if (vehiculo.placa == placa) {
+      return vehiculo;
+    }
+  }
+
+  return null;
+}
+
+void buscarVehiculo() {
+  print('\n--- BUSCAR VEHÍCULO ---');
+
+  if (vehiculos.isEmpty) {
+    print('No hay vehículos en el parqueadero.');
+    return;
+  }
+
+  String placa = leerPlaca('Placa a buscar: ');
+  Vehiculo? encontrado = buscarPorPlaca(placa);
+
+  if (encontrado == null) {
+    print('No hay ningún vehículo con la placa $placa en el parqueadero.');
+  } else {
+    print('\nVehículo encontrado:');
+    print(encontrado.obtenerInfo());
+  }
+}
