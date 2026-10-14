@@ -118,3 +118,8 @@ Estas son decisiones que se tomaron para mantener el proyecto sencillo:
 ### Paso 19 — Resumen con total, cupos y recaudo
 - **Qué se hizo:** se agregó en `lib/gestion.dart` la función `mostrarResumen()`, que muestra cuántos vehículos hay en el parqueadero, cuántos cupos quedan disponibles (capacidad máxima menos vehículos actuales) y el dinero recaudado en la sesión. La opción 6 del menú ahora llama a esta función, con lo que todas las opciones del menú quedaron funcionando.
 - **Cómo se probó:** se eligió la opción 6 al iniciar y mostró 0 vehículos, 20 cupos y $0. Después de registrar ABC123 y XYZ98 mostró 2 vehículos y 18 cupos. Al sacar ABC123 a las 11 (entrada 8, cobro de $12000), el resumen mostró 1 vehículo, 19 cupos y $12000 recaudados.
+
+
+### Paso 20 — Conteo de vehículos por tipo en el resumen
+- **Qué se hizo:** se modificó `mostrarResumen()` para mostrar cuántos vehículos hay de cada tipo. Se usa un Map `cantidadPorTipo` (tipo → cantidad): primero, con un `for-in` sobre las claves de `tarifasPorHora`, se pone cada tipo en 0; luego, con otro `for-in` sobre la lista de vehículos, se suma 1 al tipo de cada vehículo. Al final se recorre el Map para mostrar el conteo.
+- **Cómo se probó:** se eligió la opción 6 sin vehículos y los tres tipos aparecieron en 0. Luego se registraron ABC123 (carro), XYZ98 (moto) y DEF456 (carro), y el resumen mostró carro: 2, moto: 1, camioneta: 0, con 3 vehículos y 17 cupos disponibles.

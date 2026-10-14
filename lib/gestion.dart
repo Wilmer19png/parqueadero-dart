@@ -177,8 +177,22 @@ void mostrarResumen() {
 
   int cuposDisponibles = capacidadMaxima - vehiculos.length;
 
+  // Cuenta cuántos vehículos hay de cada tipo (tipo -> cantidad)
+  Map<String, int> cantidadPorTipo = {};
+  for (String tipo in tarifasPorHora.keys) {
+    cantidadPorTipo[tipo] = 0;
+  }
+  for (Vehiculo vehiculo in vehiculos) {
+    cantidadPorTipo[vehiculo.tipo] = (cantidadPorTipo[vehiculo.tipo] ?? 0) + 1;
+  }
+
   print('Vehículos en el parqueadero: ${vehiculos.length}');
+  print('Cantidad por tipo:');
+  for (String tipo in cantidadPorTipo.keys) {
+    print('  - $tipo: ${cantidadPorTipo[tipo]}');
+  }
   print('Cupos disponibles: $cuposDisponibles de $capacidadMaxima');
   print('Dinero recaudado en la sesión: \$$totalRecaudado');
 }
+
 
