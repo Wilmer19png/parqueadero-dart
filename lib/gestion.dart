@@ -149,14 +149,21 @@ void eliminarVehiculo() {
   print('\nVehículo encontrado:');
   print(vehiculo.obtenerInfo());
 
+  int dias = leerEntero('Días después de la entrada (0 si sale el mismo día): ');
+  while (dias < 0) {
+    print('Los días no pueden ser negativos. Intenta de nuevo.');
+    dias = leerEntero('Días después de la entrada (0 si sale el mismo día): ');
+  }
+
   int horaSalida = leerHora('Hora de salida (0 a 23): ');
 
-  if (horaSalida < vehiculo.horaEntrada) {
-    print('La hora de salida no puede ser menor que la de entrada (${vehiculo.horaEntrada}:00). El sistema no maneja salidas al día siguiente.');
+  if (dias == 0 && horaSalida < vehiculo.horaEntrada) {
+    print('Si sale el mismo día, la hora de salida no puede ser menor que la de entrada (${vehiculo.horaEntrada}:00). Si salió otro día, indica cuántos días después.');
     return;
   }
 
-  int horas = horaSalida - vehiculo.horaEntrada;
+  // Cada día completo suma 24 horas
+  int horas = dias * 24 + horaSalida - vehiculo.horaEntrada;
   int cobro = vehiculo.calcularCobro(horas);
 
   totalRecaudado = totalRecaudado + cobro;
@@ -171,6 +178,7 @@ void eliminarVehiculo() {
   }
   print('Total a pagar: \$$cobro');
 }
+
 
 void mostrarResumen() {
   print('\n--- RESUMEN DEL PARQUEADERO ---');

@@ -18,8 +18,8 @@ Estas son decisiones que se tomaron para mantener el proyecto sencillo:
 - **Capacidad:** máximo 20 vehículos al mismo tiempo.
 - **Placa:** es obligatoria, debe tener entre 5 y 6 caracteres, se guarda en mayúsculas y no se puede repetir ni modificar.
 - **Horas:** se escriben como números enteros de 0 a 23 (por ejemplo, 8 para las 8:00). No se manejan minutos.
-- **Cobro:** se calcula como hora de salida menos hora de entrada. Si el vehículo sale en la misma hora en que entró, se cobra 1 hora como mínimo.
-- **Salidas al día siguiente:** no se manejan. La hora de salida debe ser mayor o igual que la de entrada; si es menor, el sistema muestra un error indicando que no maneja salidas al día siguiente.
+- **Cobro:** las horas se calculan como (días × 24) + hora de salida − hora de entrada, y se multiplican por la tarifa del tipo de vehículo. Si el vehículo sale el mismo día y en la misma hora en que entró, se cobra 1 hora como mínimo.
+- **Estadías de varios días:** el sistema no guarda fechas, así que al registrar la salida pregunta cuántos días después de la entrada sale el vehículo (0 si es el mismo día). Así se pueden cobrar estadías de un día para otro o de más de 24 horas. Si sale el mismo día, la hora de salida no puede ser menor que la de entrada.
 - **Datos:** se guardan solo en memoria mientras el programa está abierto. Al salir se pierden, porque el proyecto no usa base de datos ni archivos.
 
 ## Bitácora
@@ -123,3 +123,8 @@ Estas son decisiones que se tomaron para mantener el proyecto sencillo:
 ### Paso 20 — Conteo de vehículos por tipo en el resumen
 - **Qué se hizo:** se modificó `mostrarResumen()` para mostrar cuántos vehículos hay de cada tipo. Se usa un Map `cantidadPorTipo` (tipo → cantidad): primero, con un `for-in` sobre las claves de `tarifasPorHora`, se pone cada tipo en 0; luego, con otro `for-in` sobre la lista de vehículos, se suma 1 al tipo de cada vehículo. Al final se recorre el Map para mostrar el conteo.
 - **Cómo se probó:** se eligió la opción 6 sin vehículos y los tres tipos aparecieron en 0. Luego se registraron ABC123 (carro), XYZ98 (moto) y DEF456 (carro), y el resumen mostró carro: 2, moto: 1, camioneta: 0, con 3 vehículos y 17 cupos disponibles.
+
+
+### Paso 21 — Salidas con estadías de varios días
+- **Qué se hizo:** se modificó `eliminarVehiculo()` para que, antes de la hora de salida, pregunte cuántos días después de la entrada sale el vehículo (0 si es el mismo día), validando con un ciclo `while` que no sea negativo. Las horas ahora se calculan como días × 24 + hora de salida − hora de entrada, lo que permite cobrar estadías de un día para otro y de más de 24 horas. La validación de que la salida no sea menor que la entrada ahora solo aplica cuando sale el mismo día. Se actualizó la sección de alcance y limitaciones del README.
+- **Cómo se probó:** se registraron cinco vehículos y se sacaron así: carro con entrada 8, 0 días y salida 11 (3 horas, $12000); moto con entrada 20 y salida 8 con 0 días, que mostró el error, luego -1 días, que fue rechazado, y 1 día (12 horas, $24000); camioneta con entrada 8, 1 día y salida 10 (26 horas, $130000); carro con entrada 8, 3 días y salida 8 (72 horas, $288000); y moto con entrada 9, 0 días y salida 9 (mínimo 1 hora, $2000). El resumen mostró $456000 recaudados, que es la suma de los cinco cobros.
