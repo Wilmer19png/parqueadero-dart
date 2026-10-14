@@ -88,3 +88,8 @@ Estas son decisiones que se tomaron para mantener el proyecto sencillo:
 ### Paso 13 — Validación de la hora de entrada
 - **Qué se hizo:** se agregó en `lib/entrada.dart` la función `leerHora()`, que usa `leerEntero()` y además vuelve a pedir la hora si es menor que 0 o mayor que 23. El registro ahora lee la hora de entrada con esta función. También se usará más adelante para la hora de salida.
 - **Cómo se probó:** se registró un vehículo escribiendo como hora "24" y "-3", que fueron rechazados por estar fuera de rango, luego "ocho", que fue rechazado por no ser un número, y por último "0", que fue aceptado como hora válida (medianoche).
+
+
+### Paso 14 — Validación de la capacidad máxima
+- **Qué se hizo:** al inicio de `registrarVehiculo()` se agregó una validación que compara la cantidad de vehículos de la lista con la constante `capacidadMaxima`. Si el parqueadero está lleno, muestra un aviso y vuelve al menú sin pedir datos. También se cambió el mensaje final del registro para mostrar cuántos cupos se están usando (por ejemplo, "1 de 20").
+- **Cómo se probó:** para no registrar 20 vehículos, se cambió temporalmente `capacidadMaxima` a 2 en `config.dart`. Se registraron dos vehículos y, al intentar un tercero, apareció el aviso de parqueadero lleno sin pedir la placa. Después se volvió a dejar la capacidad en 20.

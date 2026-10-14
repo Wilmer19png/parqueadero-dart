@@ -1,3 +1,4 @@
+import 'package:parqueadero/config.dart';
 import 'package:parqueadero/entrada.dart';
 import 'package:parqueadero/vehiculo.dart';
 
@@ -9,6 +10,11 @@ final Set<String> placasRegistradas = {};
 
 void registrarVehiculo() {
   print('\n--- REGISTRAR VEHÍCULO ---');
+
+  if (vehiculos.length >= capacidadMaxima) {
+    print('El parqueadero está lleno ($capacidadMaxima vehículos). No se pueden registrar más hasta que salga alguno.');
+    return;
+  }
 
   String placa = leerPlaca('Placa: ');
 
@@ -28,5 +34,5 @@ void registrarVehiculo() {
 
   print('\nVehículo registrado correctamente:');
   print(nuevo.obtenerInfo());
-  print('Vehículos en el parqueadero: ${vehiculos.length}');
+  print('Vehículos en el parqueadero: ${vehiculos.length} de $capacidadMaxima');
 }
