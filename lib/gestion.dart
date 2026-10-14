@@ -8,6 +8,9 @@ final List<Vehiculo> vehiculos = [];
 // Placas de los vehículos que están dentro; un Set no permite repetidos
 final Set<String> placasRegistradas = {};
 
+// Dinero que se ha cobrado en las salidas durante esta sesión
+int totalRecaudado = 0;
+
 void registrarVehiculo() {
   print('\n--- REGISTRAR VEHÍCULO ---');
 
@@ -125,4 +128,46 @@ void modificarVehiculo() {
 
   print('\nVehículo modificado correctamente:');
   print(vehiculo.obtenerInfo());
+}
+
+void eliminarVehiculo() {
+  print('\n--- SALIDA DE VEHÍCULO ---');
+
+  if (vehiculos.isEmpty) {
+    print('No hay vehículos en el parqueadero.');
+    return;
+  }
+
+  String placa = leerPlaca('Placa del vehículo que sale: ');
+  Vehiculo? vehiculo = buscarPorPlaca(placa);
+
+  if (vehiculo == null) {
+    print('No hay ningún vehículo con la placa $placa en el parqueadero.');
+    return;
+  }
+
+  print('\nVehículo encontrado:');
+  print(vehiculo.obtenerInfo());
+
+  int horaSalida = leerHora('Hora de salida (0 a 23): ');
+
+  if (horaSalida < vehiculo.horaEntrada) {
+    print('La hora de salida no puede ser menor que la de entrada (${vehiculo.horaEntrada}:00). El sistema no maneja salidas al día siguiente.');
+    return;
+  }
+
+  int horas = horaSalida - vehiculo.horaEntrada;
+  int cobro = vehiculo.calcularCobro(horas);
+
+  totalRecaudado = totalRecaudado + cobro;
+  vehiculos.remove(vehiculo);
+  placasRegistradas.remove(placa);
+
+  print('\nSalida registrada correctamente.');
+  if (horas < 1) {
+    print('Tiempo: menos de 1 hora (se cobra 1 hora como mínimo)');
+  } else {
+    print('Tiempo: $horas hora(s)');
+  }
+  print('Total a pagar: \$$cobro');
 }

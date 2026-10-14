@@ -22,7 +22,7 @@ void main() {
       case 4:
         modificarVehiculo();
       case 5:
-        print('\n[Eliminar vehículo] Opción en construcción.');
+        eliminarVehiculo();
       case 6:
         print('\n[Mostrar resumen] Opción en construcción.');
       case 0:
