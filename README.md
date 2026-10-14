@@ -78,3 +78,8 @@ Estas son decisiones que se tomaron para mantener el proyecto sencillo:
 ### Paso 11 — Validación de placa repetida con un Set
 - **Qué se hizo:** se agregó en `lib/gestion.dart` el Set `placasRegistradas`, que guarda las placas de los vehículos que están dentro del parqueadero. Al registrar, si la placa ya está en el Set se muestra un error y se vuelve al menú sin pedir los demás datos; si no está, se registra el vehículo y se agrega su placa al Set.
 - **Cómo se probó:** se registró el vehículo ABC123 y luego se intentó registrar "abc123", que el sistema rechazó por estar repetida (al pasarla a mayúsculas es la misma placa). Después se registró XYZ98 sin problema y el contador quedó en 2.
+
+
+### Paso 12 — Validación del tipo de vehículo
+- **Qué se hizo:** se agregó en `lib/entrada.dart` la función `leerTipo()`, que convierte el tipo a minúsculas y solo lo acepta si existe como clave en el Map `tarifasPorHora`. Si no existe, muestra los tipos permitidos y lo vuelve a pedir. El registro ahora lee el tipo con esta función, así que todo vehículo registrado tiene una tarifa válida.
+- **Cómo se probó:** se registró un vehículo escribiendo "bicicleta" y "bus", que fueron rechazados mostrando los tipos permitidos, y luego "CARRO", que fue aceptado y se guardó como "carro".

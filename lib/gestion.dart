@@ -17,7 +17,7 @@ void registrarVehiculo() {
     return;
   }
 
-  String tipo = leerTexto('Tipo (carro, moto, camioneta): ');
+  String tipo = leerTipo('Tipo (carro, moto, camioneta): ');
   String marca = leerTexto('Marca: ');
   String color = leerTexto('Color: ');
   int horaEntrada = leerEntero('Hora de entrada (0 a 23): ');

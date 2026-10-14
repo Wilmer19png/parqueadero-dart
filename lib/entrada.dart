@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:parqueadero/config.dart';
+
 // Lee un texto por consola y lo vuelve a pedir si queda vacío.
 String leerTexto(String mensaje) {
   String texto = '';
@@ -42,4 +44,16 @@ String leerPlaca(String mensaje) {
   }
 
   return placa;
+}
+
+// Lee el tipo de vehículo. Solo acepta los tipos que tienen tarifa en el Map.
+String leerTipo(String mensaje) {
+  String tipo = leerTexto(mensaje).toLowerCase();
+
+  while (!tarifasPorHora.containsKey(tipo)) {
+    print('Tipo no válido. Los tipos permitidos son: ${tarifasPorHora.keys.join(', ')}.');
+    tipo = leerTexto(mensaje).toLowerCase();
+  }
+
+  return tipo;
 }
