@@ -7,4 +7,9 @@ class Vehiculo {
   final int horaEntrada;
 
   Vehiculo(this.placa, this.tipo, this.marca, this.color, this.horaEntrada);
+
+  // Devuelve los datos del vehículo en una sola línea
+  String obtenerInfo() {
+    return 'Placa: $placa | Tipo: $tipo | Marca: $marca | Color: $color | Entrada: $horaEntrada:00';
+  }
 }

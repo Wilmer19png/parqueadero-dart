@@ -47,3 +47,8 @@ Estas son decisiones que se tomaron para mantener el proyecto sencillo:
 ### Paso 5 — Clase Vehiculo con atributos y constructor
 - **Qué se hizo:** se creó el archivo `lib/vehiculo.dart` con la clase `Vehiculo`, que tiene los atributos placa, tipo, marca, color y hora de entrada, y un constructor para crear vehículos con esos datos. La placa y la hora de entrada se declararon como `final` porque no deben cambiar después de registrar el vehículo. En `main()` se creó un objeto de prueba para comprobar que la clase funciona.
 - **Cómo se probó:** se ejecutó `dart run` y se verificó que antes del menú aparecieran los datos del vehículo de prueba (ABC123, carro, Mazda, Rojo, 8:00).
+
+
+### Paso 6 — Método para obtener la información del vehículo
+- **Qué se hizo:** se agregó a la clase `Vehiculo` el método `obtenerInfo()`, que devuelve en una sola línea la placa, el tipo, la marca, el color y la hora de entrada. En `main()` se reemplazaron los cinco `print` del vehículo de prueba por una sola llamada a este método, lo que evita repetir código cada vez que se necesite mostrar un vehículo.
+- **Cómo se probó:** se ejecutó `dart run` y se verificó que antes del menú apareciera la línea `Placa: ABC123 | Tipo: carro | Marca: Mazda | Color: Rojo | Entrada: 8:00`.

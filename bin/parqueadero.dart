@@ -7,11 +7,7 @@ void main() {
   // Objeto de prueba para comprobar que la clase funciona
   Vehiculo prueba = Vehiculo('ABC123', 'carro', 'Mazda', 'Rojo', 8);
   print('\nVehículo de prueba creado:');
-  print('Placa: ${prueba.placa}');
-  print('Tipo: ${prueba.tipo}');
-  print('Marca: ${prueba.marca}');
-  print('Color: ${prueba.color}');
-  print('Hora de entrada: ${prueba.horaEntrada}:00');
+  print(prueba.obtenerInfo());
 
   bool continuar = true;
 
