@@ -75,6 +75,42 @@ parqueadero-dart/
 - **Set (`placasRegistradas`):** guarda las placas de los vehículos que están dentro. Se usa porque un Set no permite elementos repetidos y con `contains()` se revisa rápidamente si una placa ya está registrada.
 - **Map (`tarifasPorHora` y `cantidadPorTipo`):** relacionan una clave con un valor. `tarifasPorHora` relaciona cada tipo de vehículo con su tarifa, sirve para calcular el cobro y sus claves indican qué tipos se aceptan. `cantidadPorTipo` relaciona cada tipo con la cantidad de vehículos de ese tipo y se usa en el resumen.
 
+## Investigación: clases y objetos
+
+### ¿Qué es una clase?
+Una clase es como un molde o una plantilla. Define qué datos va a tener algo y qué va a poder hacer, pero por sí sola no es ningún elemento concreto. En este proyecto, `Vehiculo` es una clase: dice que todo vehículo del parqueadero tiene placa, tipo, marca, color y hora de entrada, y que sabe mostrar su información y calcular cuánto debe pagar.
+
+### ¿Qué es un objeto?
+Un objeto es algo concreto creado a partir de una clase, con sus propios datos. Cada vez que se registra un vehículo en el sistema se crea un objeto nuevo, por ejemplo:
+
+```dart
+Vehiculo nuevo = Vehiculo('ABC123', 'carro', 'Mazda', 'Rojo', 8);
+```
+
+Ese objeto es un carro Mazda rojo, de placa ABC123, que entró a las 8:00. Si después se registra una moto Yamaha de placa XYZ98, ese es otro objeto distinto, aunque los dos salen de la misma clase.
+
+### ¿Cuál es la diferencia entre clase y objeto?
+La clase es la definición general y el objeto es un caso real de esa definición. La clase `Vehiculo` se escribe una sola vez en el código; los objetos se crean todas las veces que se necesiten mientras el programa funciona, cada uno con sus propios datos. Es como la diferencia entre el formulario de registro del parqueadero (la clase) y cada formulario ya lleno con los datos de un carro (los objetos).
+
+### ¿Qué es un atributo?
+Un atributo es un dato que guarda cada objeto. En la clase `Vehiculo` los atributos son `placa`, `tipo`, `marca`, `color` y `horaEntrada`. Todos los vehículos tienen esos atributos, pero cada uno con sus propios valores. Algunos son `final`, como la placa y la hora de entrada, porque no deben cambiar después de registrar el vehículo; otros, como el color, sí se pueden modificar.
+
+### ¿Qué es un método?
+Un método es una acción que puede hacer un objeto, y trabaja con sus propios atributos. La clase `Vehiculo` tiene dos:
+
+- `obtenerInfo()`: devuelve en una línea los datos del vehículo, para mostrarlo en la lista, en la búsqueda o al modificarlo.
+- `calcularCobro(horas)`: usa el tipo del vehículo para buscar su tarifa y la multiplica por las horas, cobrando mínimo 1 hora.
+
+Por ejemplo, si un carro y una moto llaman a `calcularCobro(3)`, cada uno obtiene un resultado distinto, porque el método usa el tipo de cada objeto.
+
+### ¿Para qué sirve un constructor?
+El constructor es el que crea el objeto y le asigna sus datos iniciales. Se llama igual que la clase. En `Vehiculo` es así:
+
+```dart
+Vehiculo(this.placa, this.tipo, this.marca, this.color, this.horaEntrada);
+```
+
+Cuando se registra un vehículo, el constructor recibe los cinco datos que escribió el usuario y, con `this`, guarda cada uno en el atributo correspondiente del objeto nuevo. Gracias al constructor, todo vehículo se crea con sus datos completos desde el principio.
 
 ## Bitácora
 
@@ -187,3 +223,8 @@ parqueadero-dart/
 ### Paso 22 — Instrucciones de ejecución y estructura de archivos
 - **Qué se hizo:** se agregaron al README las secciones de instrucciones para ejecutar el proyecto, estructura de archivos (con una tabla que explica qué contiene cada uno) y una explicación de por qué se usa cada colección: List, Set y Map.
 - **Cómo se probó:** se clonó el repositorio en una carpeta nueva siguiendo las instrucciones y se ejecutó `dart run`, que abrió el programa sin pasos adicionales. También se revisó en GitHub que las secciones nuevas se vieran correctamente.
+
+
+### Paso 23 — Investigación sobre clases y objetos
+- **Qué se hizo:** se agregó al README una investigación corta sobre qué es una clase, qué es un objeto, la diferencia entre ambos, qué es un atributo, qué es un método y para qué sirve un constructor, explicada con ejemplos de la clase `Vehiculo` del proyecto.
+- **Cómo se probó:** se revisó en GitHub que la sección se viera correctamente y que los ejemplos de código coincidieran con el código real de `lib/vehiculo.dart`.
