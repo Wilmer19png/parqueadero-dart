@@ -57,3 +57,9 @@ Estas son decisiones que se tomaron para mantener el proyecto sencillo:
 ### Paso 7 — Constantes del parqueadero y Map de tarifas
 - **Qué se hizo:** se creó el archivo `lib/config.dart` con la constante `capacidadMaxima` (20 vehículos) y el Map `tarifasPorHora`, que relaciona cada tipo de vehículo con su tarifa por hora (carro $4000, moto $2000, camioneta $5000). Se agregó la función `mostrarTarifas()`, que recorre el Map con un ciclo `for-in` y muestra las tarifas al iniciar el programa.
 - **Cómo se probó:** se ejecutó `dart run` y se verificó que debajo del título aparecieran la capacidad máxima y las tres tarifas.
+
+
+
+### Paso 8 — Método calcularCobro en la clase Vehiculo
+- **Qué se hizo:** se agregó a la clase `Vehiculo` el método `calcularCobro(horas)`, que busca la tarifa del tipo de vehículo en el Map `tarifasPorHora` y la multiplica por las horas. Con un `if/else` se aplica la regla de cobrar mínimo 1 hora cuando el vehículo sale en la misma hora en que entró. En `main()` se agregaron dos líneas temporales para probar el cálculo.
+- **Cómo se probó:** se ejecutó `dart run` con el vehículo de prueba (un carro) y se verificó que 3 horas dieran $12000 (3 × 4000) y que 0 horas cobraran el mínimo de 1 hora, $4000.

@@ -6,10 +6,13 @@ void main() {
   mostrarBienvenida();
   mostrarTarifas();
 
-  // Objeto de prueba para comprobar que la clase funciona
+    // Objeto de prueba para comprobar que la clase funciona
   Vehiculo prueba = Vehiculo('ABC123', 'carro', 'Mazda', 'Rojo', 8);
   print('\nVehículo de prueba creado:');
   print(prueba.obtenerInfo());
+  print('Cobro por 3 horas: \$${prueba.calcularCobro(3)}');
+  print('Cobro por 0 horas (mínimo 1 hora): \$${prueba.calcularCobro(0)}');
+
 
   bool continuar = true;
 
