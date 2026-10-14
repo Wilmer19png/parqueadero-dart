@@ -1,8 +1,10 @@
+import 'package:parqueadero/config.dart';
 import 'package:parqueadero/entrada.dart';
 import 'package:parqueadero/vehiculo.dart';
 
 void main() {
   mostrarBienvenida();
+  mostrarTarifas();
 
   // Objeto de prueba para comprobar que la clase funciona
   Vehiculo prueba = Vehiculo('ABC123', 'carro', 'Mazda', 'Rojo', 8);
@@ -41,6 +43,14 @@ void mostrarBienvenida() {
   print('======================================');
   print('   SISTEMA DE GESTIÓN DE PARQUEADERO');
   print('======================================');
+}
+
+void mostrarTarifas() {
+  print('Capacidad máxima: $capacidadMaxima vehículos');
+  print('Tarifas por hora:');
+  for (String tipo in tarifasPorHora.keys) {
+    print('  - $tipo: \$${tarifasPorHora[tipo]}');
+  }
 }
 
 void mostrarMenu() {

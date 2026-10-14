@@ -52,3 +52,8 @@ Estas son decisiones que se tomaron para mantener el proyecto sencillo:
 ### Paso 6 — Método para obtener la información del vehículo
 - **Qué se hizo:** se agregó a la clase `Vehiculo` el método `obtenerInfo()`, que devuelve en una sola línea la placa, el tipo, la marca, el color y la hora de entrada. En `main()` se reemplazaron los cinco `print` del vehículo de prueba por una sola llamada a este método, lo que evita repetir código cada vez que se necesite mostrar un vehículo.
 - **Cómo se probó:** se ejecutó `dart run` y se verificó que antes del menú apareciera la línea `Placa: ABC123 | Tipo: carro | Marca: Mazda | Color: Rojo | Entrada: 8:00`.
+
+
+### Paso 7 — Constantes del parqueadero y Map de tarifas
+- **Qué se hizo:** se creó el archivo `lib/config.dart` con la constante `capacidadMaxima` (20 vehículos) y el Map `tarifasPorHora`, que relaciona cada tipo de vehículo con su tarifa por hora (carro $4000, moto $2000, camioneta $5000). Se agregó la función `mostrarTarifas()`, que recorre el Map con un ciclo `for-in` y muestra las tarifas al iniciar el programa.
+- **Cómo se probó:** se ejecutó `dart run` y se verificó que debajo del título aparecieran la capacidad máxima y las tres tarifas.
