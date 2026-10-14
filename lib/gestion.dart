@@ -171,3 +171,14 @@ void eliminarVehiculo() {
   }
   print('Total a pagar: \$$cobro');
 }
+
+void mostrarResumen() {
+  print('\n--- RESUMEN DEL PARQUEADERO ---');
+
+  int cuposDisponibles = capacidadMaxima - vehiculos.length;
+
+  print('Vehículos en el parqueadero: ${vehiculos.length}');
+  print('Cupos disponibles: $cuposDisponibles de $capacidadMaxima');
+  print('Dinero recaudado en la sesión: \$$totalRecaudado');
+}
+

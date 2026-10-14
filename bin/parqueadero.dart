@@ -24,7 +24,7 @@ void main() {
       case 5:
         eliminarVehiculo();
       case 6:
-        print('\n[Mostrar resumen] Opción en construcción.');
+        mostrarResumen();
       case 0:
         print('\nGracias por usar el sistema. ¡Hasta pronto!');
         continuar = false;
