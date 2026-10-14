@@ -16,7 +16,7 @@ void main() {
       case 1:
         registrarVehiculo();
       case 2:
-        print('\n[Consultar todos] Opción en construcción.');
+        consultarTodos();
       case 3:
         print('\n[Buscar vehículo] Opción en construcción.');
       case 4:

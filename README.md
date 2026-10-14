@@ -93,3 +93,8 @@ Estas son decisiones que se tomaron para mantener el proyecto sencillo:
 ### Paso 14 — Validación de la capacidad máxima
 - **Qué se hizo:** al inicio de `registrarVehiculo()` se agregó una validación que compara la cantidad de vehículos de la lista con la constante `capacidadMaxima`. Si el parqueadero está lleno, muestra un aviso y vuelve al menú sin pedir datos. También se cambió el mensaje final del registro para mostrar cuántos cupos se están usando (por ejemplo, "1 de 20").
 - **Cómo se probó:** para no registrar 20 vehículos, se cambió temporalmente `capacidadMaxima` a 2 en `config.dart`. Se registraron dos vehículos y, al intentar un tercero, apareció el aviso de parqueadero lleno sin pedir la placa. Después se volvió a dejar la capacidad en 20.
+
+
+### Paso 15 — Consulta de todos los vehículos
+- **Qué se hizo:** se agregó en `lib/gestion.dart` la función `consultarTodos()`, que recorre la lista de vehículos con un ciclo `for` clásico y muestra cada uno numerado usando el método `obtenerInfo()`. Si la lista está vacía, muestra un aviso. Al final muestra el total. La opción 2 del menú ahora llama a esta función.
+- **Cómo se probó:** se ejecutó `dart run`, se eligió la opción 2 sin vehículos y apareció el aviso "No hay vehículos en el parqueadero". Luego se registraron ABC123 y XYZ98, y la opción 2 los mostró numerados del 1 al 2 con el total.

@@ -36,3 +36,18 @@ void registrarVehiculo() {
   print(nuevo.obtenerInfo());
   print('Vehículos en el parqueadero: ${vehiculos.length} de $capacidadMaxima');
 }
+
+void consultarTodos() {
+  print('\n--- VEHÍCULOS EN EL PARQUEADERO ---');
+
+  if (vehiculos.isEmpty) {
+    print('No hay vehículos en el parqueadero.');
+    return;
+  }
+
+  for (int i = 0; i < vehiculos.length; i++) {
+    print('${i + 1}. ${vehiculos[i].obtenerInfo()}');
+  }
+
+  print('Total: ${vehiculos.length} vehículo(s)');
+}
