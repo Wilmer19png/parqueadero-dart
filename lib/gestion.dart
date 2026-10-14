@@ -20,7 +20,7 @@ void registrarVehiculo() {
   String tipo = leerTipo('Tipo (carro, moto, camioneta): ');
   String marca = leerTexto('Marca: ');
   String color = leerTexto('Color: ');
-  int horaEntrada = leerEntero('Hora de entrada (0 a 23): ');
+  int horaEntrada = leerHora('Hora de entrada (0 a 23): ');
 
   Vehiculo nuevo = Vehiculo(placa, tipo, marca, color, horaEntrada);
   vehiculos.add(nuevo);

@@ -57,3 +57,15 @@ String leerTipo(String mensaje) {
 
   return tipo;
 }
+
+// Lee una hora del día como número entero entre 0 y 23.
+int leerHora(String mensaje) {
+  int hora = leerEntero(mensaje);
+
+  while (hora < 0 || hora > 23) {
+    print('La hora debe estar entre 0 y 23. Intenta de nuevo.');
+    hora = leerEntero(mensaje);
+  }
+
+  return hora;
+}

@@ -83,3 +83,8 @@ Estas son decisiones que se tomaron para mantener el proyecto sencillo:
 ### Paso 12 — Validación del tipo de vehículo
 - **Qué se hizo:** se agregó en `lib/entrada.dart` la función `leerTipo()`, que convierte el tipo a minúsculas y solo lo acepta si existe como clave en el Map `tarifasPorHora`. Si no existe, muestra los tipos permitidos y lo vuelve a pedir. El registro ahora lee el tipo con esta función, así que todo vehículo registrado tiene una tarifa válida.
 - **Cómo se probó:** se registró un vehículo escribiendo "bicicleta" y "bus", que fueron rechazados mostrando los tipos permitidos, y luego "CARRO", que fue aceptado y se guardó como "carro".
+
+
+### Paso 13 — Validación de la hora de entrada
+- **Qué se hizo:** se agregó en `lib/entrada.dart` la función `leerHora()`, que usa `leerEntero()` y además vuelve a pedir la hora si es menor que 0 o mayor que 23. El registro ahora lee la hora de entrada con esta función. También se usará más adelante para la hora de salida.
+- **Cómo se probó:** se registró un vehículo escribiendo como hora "24" y "-3", que fueron rechazados por estar fuera de rango, luego "ocho", que fue rechazado por no ser un número, y por último "0", que fue aceptado como hora válida (medianoche).
