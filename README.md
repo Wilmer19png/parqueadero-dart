@@ -42,3 +42,8 @@ Estas son decisiones que se tomaron para mantener el proyecto sencillo:
 ### Paso 4 — Funciones de lectura por consola y validación del menú
 - **Qué se hizo:** se creó el archivo `lib/entrada.dart` con dos funciones reutilizables: `leerTexto()`, que no acepta campos vacíos, y `leerEntero()`, que no acepta valores que no sean números enteros. El menú ahora lee la opción con `leerEntero()` y el `switch` compara números. Con esto el código quedó dividido en más de un archivo.
 - **Cómo se probó:** se ejecutó `dart run` y se probó presionar Enter sin escribir nada (pide de nuevo el dato), escribir "hola" (avisa que debe ser un número), escribir 9 (opción no válida), escribir 2 (muestra su mensaje) y escribir 0 (sale del programa).
+
+
+### Paso 5 — Clase Vehiculo con atributos y constructor
+- **Qué se hizo:** se creó el archivo `lib/vehiculo.dart` con la clase `Vehiculo`, que tiene los atributos placa, tipo, marca, color y hora de entrada, y un constructor para crear vehículos con esos datos. La placa y la hora de entrada se declararon como `final` porque no deben cambiar después de registrar el vehículo. En `main()` se creó un objeto de prueba para comprobar que la clase funciona.
+- **Cómo se probó:** se ejecutó `dart run` y se verificó que antes del menú aparecieran los datos del vehículo de prueba (ABC123, carro, Mazda, Rojo, 8:00).
