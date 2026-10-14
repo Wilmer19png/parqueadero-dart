@@ -103,3 +103,8 @@ Estas son decisiones que se tomaron para mantener el proyecto sencillo:
 ### Paso 16 — Búsqueda de vehículo por placa
 - **Qué se hizo:** se agregaron en `lib/gestion.dart` dos funciones. `buscarPorPlaca()` recorre la lista con un ciclo `for-in` y devuelve el vehículo que tenga la placa indicada, o `null` si no lo encuentra; se va a reutilizar en modificar y eliminar. `buscarVehiculo()` es la opción 3 del menú: pide la placa con `leerPlaca()` y muestra el vehículo o un aviso si no existe.
 - **Cómo se probó:** se eligió la opción 3 sin vehículos y apareció el aviso sin pedir la placa. Luego se registró ABC123 y se buscó "xyz98", que no existe, y apareció el aviso; después se buscó "abc123" en minúsculas y se encontró el vehículo ABC123.
+
+
+### Paso 17 — Modificación de marca, color y tipo
+- **Qué se hizo:** se agregó en `lib/gestion.dart` la función `modificarVehiculo()`. Pide la placa, busca el vehículo con `buscarPorPlaca()` y, si existe, muestra sus datos actuales y un submenú con `switch` para cambiar la marca, el color o el tipo (este último validado con `leerTipo()`). La placa y la hora de entrada no se pueden modificar porque son `final` en la clase. La opción 4 del menú ahora llama a esta función.
+- **Cómo se probó:** se registró ABC123 y se intentó modificar la placa ZZZ11, que no existe, y apareció el aviso. Luego se cambió el color de ABC123 a "Azul" y el tipo a "camioneta" (antes se rechazó "bus"). También se probó una opción inválida (7), que no cambió nada, y la opción 0, que canceló. Al consultar todos, el vehículo mostró los cambios.

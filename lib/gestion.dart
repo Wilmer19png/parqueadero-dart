@@ -81,3 +81,48 @@ void buscarVehiculo() {
     print(encontrado.obtenerInfo());
   }
 }
+
+void modificarVehiculo() {
+  print('\n--- MODIFICAR VEHÍCULO ---');
+
+  if (vehiculos.isEmpty) {
+    print('No hay vehículos en el parqueadero.');
+    return;
+  }
+
+  String placa = leerPlaca('Placa del vehículo a modificar: ');
+  Vehiculo? vehiculo = buscarPorPlaca(placa);
+
+  if (vehiculo == null) {
+    print('No hay ningún vehículo con la placa $placa en el parqueadero.');
+    return;
+  }
+
+  print('\nDatos actuales:');
+  print(vehiculo.obtenerInfo());
+
+  print('\n¿Qué dato quieres modificar?');
+  print('1. Marca');
+  print('2. Color');
+  print('3. Tipo');
+  print('0. Cancelar');
+  int opcion = leerEntero('Elige una opción: ');
+
+  switch (opcion) {
+    case 1:
+      vehiculo.marca = leerTexto('Nueva marca: ');
+    case 2:
+      vehiculo.color = leerTexto('Nuevo color: ');
+    case 3:
+      vehiculo.tipo = leerTipo('Nuevo tipo (carro, moto, camioneta): ');
+    case 0:
+      print('Modificación cancelada.');
+      return;
+    default:
+      print('Opción no válida. No se modificó ningún dato.');
+      return;
+  }
+
+  print('\nVehículo modificado correctamente:');
+  print(vehiculo.obtenerInfo());
+}

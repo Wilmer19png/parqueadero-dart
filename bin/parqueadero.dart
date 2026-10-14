@@ -20,7 +20,7 @@ void main() {
       case 3:
         buscarVehiculo();
       case 4:
-        print('\n[Modificar vehículo] Opción en construcción.');
+        modificarVehiculo();
       case 5:
         print('\n[Eliminar vehículo] Opción en construcción.');
       case 6:
