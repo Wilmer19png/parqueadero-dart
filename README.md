@@ -9,10 +9,21 @@ Aplicación de consola desarrollada en Dart para gestionar los vehículos de un 
 
 El sistema permite llevar el control de los vehículos que entran y salen de un parqueadero desde la consola. Se pueden registrar vehículos (carro, moto o camioneta) con su placa, marca, color y hora de entrada; consultar todos los vehículos parqueados; buscar uno por su placa; modificar sus datos; registrar su salida calculando el cobro según la tarifa por hora de cada tipo; y ver un resumen con el total de vehículos, la cantidad por tipo, los cupos disponibles y el dinero recaudado.
 
-El parqueadero tiene una capacidad máxima de 20 vehículos y no permite registrar dos vehículos con la misma placa.
+## Alcance y limitaciones
+
+Estas son decisiones que se tomaron para mantener el proyecto sencillo:
+
+- **Tipos de vehículo:** solo carro, moto y camioneta. No se incluyen bicicletas porque no tienen placa y el sistema identifica cada vehículo por su placa.
+- **Tarifas por hora:** carro $4.000, moto $2.000 y camioneta $5.000.
+- **Capacidad:** máximo 20 vehículos al mismo tiempo.
+- **Placa:** es obligatoria, debe tener entre 5 y 6 caracteres, se guarda en mayúsculas y no se puede repetir ni modificar.
+- **Horas:** se escriben como números enteros de 0 a 23 (por ejemplo, 8 para las 8:00). No se manejan minutos.
+- **Cobro:** se calcula como hora de salida menos hora de entrada. Si el vehículo sale en la misma hora en que entró, se cobra 1 hora como mínimo.
+- **Salidas al día siguiente:** no se manejan. La hora de salida debe ser mayor o igual que la de entrada; si es menor, el sistema muestra un error indicando que no maneja salidas al día siguiente.
+- **Datos:** se guardan solo en memoria mientras el programa está abierto. Al salir se pierden, porque el proyecto no usa base de datos ni archivos.
 
 ## Bitácora
 
 ### Paso 1 — Inicialización del repositorio
-- **Qué se hizo:** se creó el repositorio local y el remoto en GitHub, el archivo README con la descripción del proyecto y el archivo `.gitignore` para no subir los archivos temporales que genera Dart.
-- **Cómo se probó:** se verificó con `git rev-parse --show-toplevel` que el repositorio quedara en la carpeta del proyecto y se confirmó en GitHub que aparecieran los dos archivos.
+- **Qué se hizo:** se creó el repositorio local y el remoto en GitHub, el README con la descripción del proyecto y el archivo `.gitignore` para no subir los archivos temporales que genera Dart. En el primer commit los archivos quedaron vacíos porque no se habían guardado, así que su contenido se agregó en un segundo commit. En un tercer commit se agregó la sección de alcance y limitaciones, que había quedado por fuera.
+- **Cómo se probó:** se verificó con `git rev-parse --show-toplevel` que el repositorio quedara en la carpeta del proyecto y se confirmó en GitHub que el README mostrara todas sus secciones.
