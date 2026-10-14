@@ -63,3 +63,8 @@ Estas son decisiones que se tomaron para mantener el proyecto sencillo:
 ### Paso 8 — Método calcularCobro en la clase Vehiculo
 - **Qué se hizo:** se agregó a la clase `Vehiculo` el método `calcularCobro(horas)`, que busca la tarifa del tipo de vehículo en el Map `tarifasPorHora` y la multiplica por las horas. Con un `if/else` se aplica la regla de cobrar mínimo 1 hora cuando el vehículo sale en la misma hora en que entró. En `main()` se agregaron dos líneas temporales para probar el cálculo.
 - **Cómo se probó:** se ejecutó `dart run` con el vehículo de prueba (un carro) y se verificó que 3 horas dieran $12000 (3 × 4000) y que 0 horas cobraran el mínimo de 1 hora, $4000.
+
+
+### Paso 9 — Registro de vehículos en una lista
+- **Qué se hizo:** se creó el archivo `lib/gestion.dart`, donde va la lógica de las opciones del menú. Tiene la lista `vehiculos` (List de objetos `Vehiculo`) y la función `registrarVehiculo()`, que pide los datos por consola, crea el objeto con el constructor y lo agrega a la lista. La opción 1 del menú ahora llama a esta función, y se quitó el vehículo de prueba de `main()`.
+- **Cómo se probó:** se ejecutó `dart run`, se registraron dos vehículos (ABC123 carro y XYZ98 moto) y se verificó que el contador subiera de 1 a 2. También se comprobó que al dejar la marca vacía o escribir "ocho" en la hora, el programa volviera a pedir el dato.
