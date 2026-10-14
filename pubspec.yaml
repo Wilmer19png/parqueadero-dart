@@ -1,0 +1,8 @@
+name: parqueadero
+description: Sistema de consola para gestionar los vehículos de un parqueadero.
+version: 1.0.0
+publish_to: none
+
+environment:
+  sdk: ^3.0.0
+

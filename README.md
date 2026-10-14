@@ -27,3 +27,8 @@ Estas son decisiones que se tomaron para mantener el proyecto sencillo:
 ### Paso 1 — Inicialización del repositorio
 - **Qué se hizo:** se creó el repositorio local y el remoto en GitHub, el README con la descripción del proyecto y el archivo `.gitignore` para no subir los archivos temporales que genera Dart. En el primer commit los archivos quedaron vacíos porque no se habían guardado, así que su contenido se agregó en un segundo commit. En un tercer commit se agregó la sección de alcance y limitaciones, que había quedado por fuera.
 - **Cómo se probó:** se verificó con `git rev-parse --show-toplevel` que el repositorio quedara en la carpeta del proyecto y se confirmó en GitHub que el README mostrara todas sus secciones.
+
+
+### Paso 2 — Estructura del proyecto y programa principal
+- **Qué se hizo:** se creó el archivo `pubspec.yaml` con el nombre del proyecto y la versión de Dart, y el archivo `bin/parqueadero.dart` con la función `main()`, que es el punto de inicio del programa. Por ahora solo muestra un mensaje de bienvenida.
+- **Cómo se probó:** se ejecutó `dart run` en la terminal y se verificó que apareciera el mensaje de bienvenida sin errores.
