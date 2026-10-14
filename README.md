@@ -32,3 +32,8 @@ Estas son decisiones que se tomaron para mantener el proyecto sencillo:
 ### Paso 2 — Estructura del proyecto y programa principal
 - **Qué se hizo:** se creó el archivo `pubspec.yaml` con el nombre del proyecto y la versión de Dart, y el archivo `bin/parqueadero.dart` con la función `main()`, que es el punto de inicio del programa. Por ahora solo muestra un mensaje de bienvenida.
 - **Cómo se probó:** se ejecutó `dart run` en la terminal y se verificó que apareciera el mensaje de bienvenida sin errores.
+
+
+### Paso 3 — Menú principal con switch y ciclo while
+- **Qué se hizo:** se creó el menú principal con las opciones del 0 al 6. Un ciclo `while` repite el menú hasta que el usuario elige salir, y un `switch` decide qué hacer según la opción. Se separaron las funciones `mostrarBienvenida()` y `mostrarMenu()` para que `main()` quedara más ordenado. Las opciones del 1 al 6 todavía muestran "en construcción".
+- **Cómo se probó:** se ejecutó `dart run` y se probaron las opciones 1 a 6 (cada una muestra su mensaje), una opción inexistente (9) y un texto ("hola"), que muestran "Opción no válida". Con 0 el programa terminó correctamente.
