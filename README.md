@@ -68,3 +68,8 @@ Estas son decisiones que se tomaron para mantener el proyecto sencillo:
 ### Paso 9 — Registro de vehículos en una lista
 - **Qué se hizo:** se creó el archivo `lib/gestion.dart`, donde va la lógica de las opciones del menú. Tiene la lista `vehiculos` (List de objetos `Vehiculo`) y la función `registrarVehiculo()`, que pide los datos por consola, crea el objeto con el constructor y lo agrega a la lista. La opción 1 del menú ahora llama a esta función, y se quitó el vehículo de prueba de `main()`.
 - **Cómo se probó:** se ejecutó `dart run`, se registraron dos vehículos (ABC123 carro y XYZ98 moto) y se verificó que el contador subiera de 1 a 2. También se comprobó que al dejar la marca vacía o escribir "ocho" en la hora, el programa volviera a pedir el dato.
+
+
+### Paso 10 — Validación del formato de la placa
+- **Qué se hizo:** se agregó en `lib/entrada.dart` la función `leerPlaca()`, que usa `leerTexto()` para no aceptar placas vacías, vuelve a pedir la placa si no tiene entre 5 y 6 caracteres y la convierte a mayúsculas. El registro de vehículos ahora lee la placa con esta función. Se dejó en `entrada.dart` porque también se va a usar en buscar, modificar y eliminar.
+- **Cómo se probó:** se registró un vehículo escribiendo primero "AB1" (muy corta) y "ABCD1234" (muy larga), que fueron rechazadas; luego Enter vacío, que pidió de nuevo el dato; y por último "abc123", que se guardó como "ABC123".

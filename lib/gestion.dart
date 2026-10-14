@@ -7,7 +7,7 @@ final List<Vehiculo> vehiculos = [];
 void registrarVehiculo() {
   print('\n--- REGISTRAR VEHÍCULO ---');
 
-  String placa = leerTexto('Placa: ');
+  String placa = leerPlaca('Placa: ');
   String tipo = leerTexto('Tipo (carro, moto, camioneta): ');
   String marca = leerTexto('Marca: ');
   String color = leerTexto('Color: ');

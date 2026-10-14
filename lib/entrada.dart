@@ -31,3 +31,15 @@ int leerEntero(String mensaje) {
 
   return numero;
 }
+
+// Lee una placa. Debe tener entre 5 y 6 caracteres y se devuelve en mayúsculas.
+String leerPlaca(String mensaje) {
+  String placa = leerTexto(mensaje).toUpperCase();
+
+  while (placa.length < 5 || placa.length > 6) {
+    print('La placa debe tener entre 5 y 6 caracteres. Intenta de nuevo.');
+    placa = leerTexto(mensaje).toUpperCase();
+  }
+
+  return placa;
+}
