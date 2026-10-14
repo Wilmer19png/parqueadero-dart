@@ -1,0 +1,33 @@
+import 'dart:io';
+
+// Lee un texto por consola y lo vuelve a pedir si queda vacío.
+String leerTexto(String mensaje) {
+  String texto = '';
+
+  while (texto.isEmpty) {
+    stdout.write(mensaje);
+    texto = (stdin.readLineSync() ?? '').trim();
+
+    if (texto.isEmpty) {
+      print('Este campo no puede estar vacío. Intenta de nuevo.');
+    }
+  }
+
+  return texto;
+}
+
+// Lee un número entero. Si el usuario escribe algo que no es número, lo vuelve a pedir.
+int leerEntero(String mensaje) {
+  int? numero;
+
+  while (numero == null) {
+    String texto = leerTexto(mensaje);
+    numero = int.tryParse(texto);
+
+    if (numero == null) {
+      print('Debes escribir un número entero. Intenta de nuevo.');
+    }
+  }
+
+  return numero;
+}
