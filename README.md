@@ -22,6 +22,60 @@ Estas son decisiones que se tomaron para mantener el proyecto sencillo:
 - **Estadías de varios días:** el sistema no guarda fechas, así que al registrar la salida pregunta cuántos días después de la entrada sale el vehículo (0 si es el mismo día). Así se pueden cobrar estadías de un día para otro o de más de 24 horas. Si sale el mismo día, la hora de salida no puede ser menor que la de entrada.
 - **Datos:** se guardan solo en memoria mientras el programa está abierto. Al salir se pierden, porque el proyecto no usa base de datos ni archivos.
 
+## Instrucciones para ejecutarlo
+
+**Requisito:** tener instalado el SDK de Dart, versión 3.0 o superior. Para verificarlo:
+
+```bash
+dart --version
+```
+
+**Pasos:**
+
+1. Clonar el repositorio y entrar a la carpeta:
+   ```bash
+   git clone https://github.com/Wilmer19png/parqueadero-dart.git
+   cd parqueadero-dart
+   ```
+2. Ejecutar el programa:
+   ```bash
+   dart run
+   ```
+3. Usar el menú escribiendo el número de la opción y presionando Enter. Con la opción 0 se sale del programa.
+
+## Estructura de archivos
+
+```
+parqueadero-dart/
+├── bin/
+│   └── parqueadero.dart
+├── lib/
+│   ├── config.dart
+│   ├── entrada.dart
+│   ├── gestion.dart
+│   └── vehiculo.dart
+├── pubspec.yaml
+├── pubspec.lock
+├── .gitignore
+└── README.md
+```
+
+| Archivo | Qué contiene |
+|---|---|
+| `bin/parqueadero.dart` | La función `main()`, que es el punto de inicio. Muestra la bienvenida, las tarifas y el menú principal; usa un ciclo `while` para repetir el menú y un `switch` para ejecutar la opción elegida. |
+| `lib/vehiculo.dart` | La clase `Vehiculo` con sus atributos (placa, tipo, marca, color y hora de entrada), su constructor y los métodos `obtenerInfo()` y `calcularCobro()`. |
+| `lib/config.dart` | Las constantes del parqueadero: la capacidad máxima y el Map de tarifas por hora. |
+| `lib/entrada.dart` | Las funciones que leen datos por consola y los validan: `leerTexto()`, `leerEntero()`, `leerPlaca()`, `leerTipo()` y `leerHora()`. |
+| `lib/gestion.dart` | La lista de vehículos, el Set de placas, el total recaudado y las funciones de cada opción del menú: registrar, consultar, buscar, modificar, eliminar (salida) y mostrar el resumen. |
+| `pubspec.yaml` | El nombre del proyecto y la versión de Dart que necesita. |
+
+### Uso de List, Set y Map
+
+- **List (`vehiculos`):** guarda los objetos `Vehiculo` que están dentro del parqueadero. Se usa porque mantiene el orden en que entraron, puede crecer y reducirse a medida que entran y salen, y se puede recorrer para mostrarlos o buscarlos.
+- **Set (`placasRegistradas`):** guarda las placas de los vehículos que están dentro. Se usa porque un Set no permite elementos repetidos y con `contains()` se revisa rápidamente si una placa ya está registrada.
+- **Map (`tarifasPorHora` y `cantidadPorTipo`):** relacionan una clave con un valor. `tarifasPorHora` relaciona cada tipo de vehículo con su tarifa, sirve para calcular el cobro y sus claves indican qué tipos se aceptan. `cantidadPorTipo` relaciona cada tipo con la cantidad de vehículos de ese tipo y se usa en el resumen.
+
+
 ## Bitácora
 
 ### Paso 1 — Inicialización del repositorio
@@ -128,3 +182,8 @@ Estas son decisiones que se tomaron para mantener el proyecto sencillo:
 ### Paso 21 — Salidas con estadías de varios días
 - **Qué se hizo:** se modificó `eliminarVehiculo()` para que, antes de la hora de salida, pregunte cuántos días después de la entrada sale el vehículo (0 si es el mismo día), validando con un ciclo `while` que no sea negativo. Las horas ahora se calculan como días × 24 + hora de salida − hora de entrada, lo que permite cobrar estadías de un día para otro y de más de 24 horas. La validación de que la salida no sea menor que la entrada ahora solo aplica cuando sale el mismo día. Se actualizó la sección de alcance y limitaciones del README.
 - **Cómo se probó:** se registraron cinco vehículos y se sacaron así: carro con entrada 8, 0 días y salida 11 (3 horas, $12000); moto con entrada 20 y salida 8 con 0 días, que mostró el error, luego -1 días, que fue rechazado, y 1 día (12 horas, $24000); camioneta con entrada 8, 1 día y salida 10 (26 horas, $130000); carro con entrada 8, 3 días y salida 8 (72 horas, $288000); y moto con entrada 9, 0 días y salida 9 (mínimo 1 hora, $2000). El resumen mostró $456000 recaudados, que es la suma de los cinco cobros.
+
+
+### Paso 22 — Instrucciones de ejecución y estructura de archivos
+- **Qué se hizo:** se agregaron al README las secciones de instrucciones para ejecutar el proyecto, estructura de archivos (con una tabla que explica qué contiene cada uno) y una explicación de por qué se usa cada colección: List, Set y Map.
+- **Cómo se probó:** se clonó el repositorio en una carpeta nueva siguiendo las instrucciones y se ejecutó `dart run`, que abrió el programa sin pasos adicionales. También se revisó en GitHub que las secciones nuevas se vieran correctamente.
